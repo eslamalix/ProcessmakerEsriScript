@@ -2,11 +2,10 @@ require([
     "esri/Map",
     "esri/geometry/Extent",
     "esri/views/MapView",
-    "esri/layers/GraphicsLayer",
     "esri/layers/MapImageLayer","esri/layers/FeatureLayer","esri/layers/GroupLayer"
   
   ], function (
-    Map,Extent,MapView,GraphicsLayer,MapImageLayer,FeatureLayer,GroupLayer) 
+    Map,Extent,MapView,MapImageLayer,FeatureLayer,GroupLayer) 
     {
     var bbox = new Extent({
       xmin: 45.934,
@@ -84,6 +83,7 @@ require([
    };
   
   view.hitTest(screenPoint).then(function (response) {
+    $("#parcel_id").find("input").val("");
     if (response.results.length) {
      var graphic = response.results.filter(function (result) {
       // check if the graphic belongs to the layer of interest
@@ -96,9 +96,5 @@ require([
    });
   
   });
-  
-
-
-
   });
   
